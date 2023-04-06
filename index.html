@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Clicker 2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <style>
+        head, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: lightblue;
+            align-items: center;
+            text-align: center;
+        }
+        div {
+            position: fixed;
+            background-color: rgb(90, 90, 90);
+            width: 33.33%;
+            height: 100%;
+            border: rgb(10, 10, 10) solid 2.5px;
+            display: inline-block;
+        }
+        div.shopmain {
+            text-align: left;
+            top: 0;
+            left: 0;
+            overflow-x: scroll;
+        }
+        div.main {
+            margin-left: -17.25%;
+            align-items: center;
+            text-align: center;
+            overflow: hide;
+        }
+        div.shoprebirth {
+            text-align: left;
+            top: 0;
+            right: 0;
+            overflow-x: scroll;
+        }
+        p {
+            font-size: 200%;
+            color: rgb(10, 10, 10);
+        }
+        * {
+            margin: 0;
+            font-family: Inconsolata, monospace;
+            color: rgb(10, 10, 10);
+        }
+        button {
+            font-size: 135%;
+            background-color: rgb(80, 80, 80);
+            border: 2px rgb(10, 10, 10) solid;
+            border-radius: 10px;
+            color: rgb(10, 10, 10);
+            margin-bottom: 7.5%;
+        }
+        h1 {
+            font-size: 275%;
+        }
+        img {
+            display: block;
+            margin: auto;
+            width: 320px;
+            height: 440px;
+        }
+        .rebirth {
+            color: darkred;
+        }
+        .b {
+            font-weight: bold;
+        }
+        .resetbutton {
+            align: right;
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(65,65,65);
+            border-radius: 10px;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="shopmain">
+        <!--Regular-->
+        <p class="b">Buy Cursor:</p>
+        <p id="shop1"></p>
+        <button id="button1" onclick="game.buy(1)">ERROR</button>
+        <p class="b">Buy Medium Cursor:</p>
+        <p id="shop2"></p>
+        <button id="button2" onclick="game.buy(2)">ERROR</button>
+        <p class="b">Buy Large Cursor:</p>
+        <p id="shop3"></p>
+        <button id="button3" onclick="game.buy(3)">ERROR</button>
+        <p class="b">Buy Cursor Mine:</p>
+        <p id="shop4"></p>
+        <button id="button4" onclick="game.buy(4)">ERROR</button>
+        <p class="b">Buy Cursor Army:</p>
+        <p id="shop5"></p>
+        <button id="button5" onclick="game.buy(5)">ERROR</button>
+        <p class="b">Buy Cursor Factory:</p>
+        <p id="shop6"></p>
+        <button id="button6" onclick="game.buy(6)">ERROR</button>
+        <!--Metal-->
+        <p class="b">Buy Metal Cursor:</p>
+        <p id="shop7"></p>
+        <button id="button7" onclick="game.buy(7)">ERROR</button>
+        <p class="b">Buy Medium Metal Cursor:</p>
+        <p id="shop8"></p>
+        <button id="button8" onclick="game.buy(8)">ERROR</button>
+        <p class="b">Buy Large Metal Cursor:</p>
+        <p id="shop9"></p>
+        <button id="button9" onclick="game.buy(9)">ERROR</button>
+        <p class="b">Buy Metal Cursor Mine:</p>
+        <p id="shop10"></p>
+        <button id="button10" onclick="game.buy(10)">ERROR</button>
+        <p class="b">Buy Metal Cursor Army:</p>
+        <p id="shop11"></p>
+        <button id="button11" onclick="game.buy(11)">ERROR</button>
+        <p class="b">Buy Metal Cursor Factory:</p>
+        <p id="shop12"></p>
+        <button id="button12" onclick="game.buy(12)">ERROR</button>
+        <!--Gold-->
+        <p class="b">Buy Golden Cursor:</p>
+        <p id="shop13"></p>
+        <button id="button13" onclick="game.buy(13)">ERROR</button>
+        <p class="b">Buy Medium Golden Cursor:</p>
+        <p id="shop14"></p>
+        <button id="button14" onclick="game.buy(14)">ERROR</button>
+        <p class="b">Buy Large Golden Cursor:</p>
+        <p id="shop15"></p>
+        <button id="button15" onclick="game.buy(15)">ERROR</button>
+        <p class="b">Buy Golden Cursor Mine:</p>
+        <p id="shop16"></p>
+        <button id="button16" onclick="game.buy(16)">ERROR</button>
+        <p class="b">Buy Golden Cursor Army:</p>
+        <p id="shop17"></p>
+        <button id="button17" onclick="game.buy(17)">ERROR</button>
+        <p class="b">Buy Golden Cursor Factory:</p>
+        <p id="shop18"></p>
+        <button id="button18" onclick="game.buy(18)">ERROR</button>
+        <!--Titanium-->
+        <p class="b">Buy Titanium Cursor:</p>
+        <p id="shop19"></p>
+        <button id="button19" onclick="game.buy(19)">ERROR</button>
+        <p class="b">Buy Medium Titanium Cursor:</p>
+        <p id="shop20"></p>
+        <button id="button20" onclick="game.buy(20)">ERROR</button>
+        <p class="b">Buy Large Titanium Cursor:</p>
+        <p id="shop21"></p>
+        <button id="button21" onclick="game.buy(21)">ERROR</button>
+        <p class="b">Buy Titanium Cursor Mine:</p>
+        <p id="shop22"></p>
+        <button id="button22" onclick="game.buy(22)">ERROR</button>
+        <p class="b">Buy Titanium Cursor Army:</p>
+        <p id="shop23"></p>
+        <button id="button23" onclick="game.buy(23)">ERROR</button>
+        <p class="b">Buy Titanium Cursor Factory:</p>
+        <p id="shop24"></p>
+        <button id="button24" onclick="game.buy(24)">ERROR</button>
+        <!--Uranium-->
+        <p class="b">Buy Uranium Cursor:</p>
+        <p id="shop25"></p>
+        <button id="button25" onclick="game.buy(25)">ERROR</button>
+        <p class="b">Buy Medium Uranium Cursor:</p>
+        <p id="shop26"></p>
+        <button id="button26" onclick="game.buy(26)">ERROR</button>
+        <p class="b">Buy Large Uranium Cursor:</p>
+        <p id="shop27"></p>
+        <button id="button27" onclick="game.buy(27)">ERROR</button>
+        <p class="b">Buy Uranium Cursor Mine:</p>
+        <p id="shop28"></p>
+        <button id="button28" onclick="game.buy(28)">ERROR</button>
+        <p class="b">Buy Uranium Cursor Army:</p>
+        <p id="shop29"></p>
+        <button id="button29" onclick="game.buy(29)">ERROR</button>
+        <p class="b">Buy Uranium Cursor Factory:</p>
+        <p id="shop30"></p>
+        <button id="button30" onclick="game.buy(30)">ERROR</button>
+        <!--Rebirth-->
+        <p class="rebirth b">Rebirth:</p>
+        <p id="shop31" class="rebirth"></p>
+        <button id="button31" onclick="rebirth()" class="rebirth">ERROR</button>
+    </div>
+    <div class="main">
+        <h1>Money:</h1>
+        <p id="moneytext"></p>
+        <p id="moneypersectext"></p>
+        <img id="clicker" onclick="clicked()" src="Assets/0.png">
+    </div>
+    <div class="shoprebirth">
+        <h1>Rebirths:<img class="resetbutton" src="Assets/reset.png" onclick="resetgame()"></h1>
+        <p id="rebirthtext"></p>
+        <br>
+        <!--Rebirth shop-->
+        <p class="b">Buy Stronger Cursors:</p>
+        <p id="shoprebirth1"></p>
+        <button id="buttonrebirth1" onclick="game.buyrebirth(1)">ERROR</button>
+        <p class="b">Buy More Keyboard Mice:</p>
+        <p id="shoprebirth2"></p>
+        <button id="buttonrebirth2" onclick="game.buyrebirth(2)">ERROR</button>
+        <p class="b">Buy Indestructable Cursors:</p>
+        <p id="shoprebirth3"></p>
+        <button id="buttonrebirth3" onclick="game.buyrebirth(3)">ERROR</button>
+        <p class="b">Buy Faster PC:</p>
+        <p id="shoprebirth4"></p>
+        <button id="buttonrebirth4" onclick="game.buyrebirth(4)">ERROR</button>
+        <p class="b">Buy Super Cursors:</p>
+        <p id="shoprebirth5"></p>
+        <button id="buttonrebirth5" onclick="game.buyrebirth(5)">ERROR</button>
+        <p class="b">Buy Faster Web Browser:</p>
+        <p id="shoprebirth6"></p>
+        <button id="buttonrebirth6" onclick="game.buyrebirth(6)">ERROR</button>
+        <p class="b">Buy Insane Cursors:</p>
+        <p id="shoprebirth7"></p>
+        <button id="buttonrebirth7" onclick="game.buyrebirth(7)">ERROR</button>
+        <p class="b">Buy Faster Monitor:</p>
+        <p id="shoprebirth8"></p>
+        <button id="buttonrebirth8" onclick="game.buyrebirth(8)">ERROR</button>
+        <p class="b">Buy Omega Cursors:</p>
+        <p id="shoprebirth9"></p>
+        <button id="buttonrebirth9" onclick="game.buyrebirth(9)">ERROR</button>
+        <p class="b">Buy Better Clicking Chair:</p>
+        <p id="shoprebirth10"></p>
+        <button id="buttonrebirth10" onclick="game.buyrebirth(10)">ERROR</button>
+        <p class="b">Buy Alpha Cursors:</p>
+        <p id="shoprebirth11"></p>
+        <button id="buttonrebirth11" onclick="game.buyrebirth(11)">ERROR</button>
+        <p class="b">Buy Clicker Server:</p>
+        <p id="shoprebirth12"></p>
+        <button id="buttonrebirth12" onclick="game.buyrebirth(12)">ERROR</button>
+    </div>
+    <script>
+    setInterval(savegame, 500)
+    //omg this took so long idk why
+    document.addEventListener("keydown", event =>{
+        if (event.code == "Space") {
+            clicked()
+        }
+    })
+    let date = new Date()
+    function timer () {
+        date = new Date()
+        return date.getTime()
+    }
+    function rebirth () {
+        if (Math.floor(game.money) >= Math.floor(game.shop[game.shop.length-2])) {
+            alert(getshorter(Math.pow(10, 55)/2))
+            game.rebirths += Math.floor(game.money/(Math.pow(10, 55)/2))
+            savegame()
+            storage.delete("money")
+            game.money = 0
+            storage.delete("amount")
+            amount = []
+            savegame()
+            location.reload()
+        }
+    }
+    let game = {
+        variables: ["money","shop","amount","stats","rebirth"],
+        money: 0,
+        shop: [25],
+        amount: [],
+        buy: function (i) {
+            if (Math.floor(game.money) >= Math.floor(game.shop[i-1])) {
+                game.money -= game.shop[i-1] 
+                game.amount[i-1] += 1
+                game.shop[i-1] *= 1.1
+                return "purchased"
+            } else {
+                return "err"
+            }
+        },
+        stats: [1],
+        rebirths: 0,
+        rebirthshop: [1, 5, 12, 700, 35, 2.3e+10, 130, 3.9e+19, 790, 2.4e+35, 5135, 2.95e+55],
+        rebirthstats: [0.1, 5e+5, 1.5, 7.5e+7, 5, 2.5e+15, 22.5, 1e+35, 150, 2.5e+70, 1000, 7.5e+125],
+        rebirthamount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        rebirthtype: ["multiplier","click","multiplier","click","multiplier","click","multiplier","click","multiplier","click","multiplier","click",],
+        buyrebirth: function (i) {
+            if (Math.floor(game.rebirths) >= Math.floor(game.rebirthshop[i-1])) {
+                game.rebirths -= game.rebirthshop[i-1] 
+                game.rebirthamount[i-1] += 1
+                game.rebirthshop[i-1] *= 1.1
+            }
+        }
+    }
+    let storage = {
+        get: function (a) {
+            return localStorage.getItem(a)
+        },
+        set: function (a, v) {
+            return localStorage.setItem(a, v)
+        },
+        delete: function (a) {
+            localStorage.removeItem(a)
+            return
+        }
+    }
+    function clicked () {
+        game.money += (1+clickpower)*multiplier
+    }
+    function init () {
+        for (let index = 0; index < 31; index++) {
+            game.shop.push(game.shop[index]*(5*(index+1)))
+            game.stats.push(game.shop[index]/4-(index/15))
+            game.amount.push(0)
+        }
+        loadgame()
+        update()
+    }
+    let mps = 0
+    let fps
+    let fpsone = timer()
+    let fpstwo = timer()
+    let multiplier
+    let clickpower
+    init()
+    function update () {
+        fpsone = timer()
+        fps = 1000/(fpsone-fpstwo)
+        fpstwo = fpsone
+        mps = 0
+        for (let index = 0; index < game.amount.length; index++) {
+            mps += game.stats[index]*game.amount[index]
+        }
+        multiplier = (game.rebirthamount[0]*game.rebirthstats[0])+(game.rebirthamount[2]*game.rebirthstats[2])+(game.rebirthamount[4]*game.rebirthstats[4])+(game.rebirthamount[6]*game.rebirthstats[6])+(game.rebirthamount[8]*game.rebirthstats[8])+(game.rebirthamount[10]*game.rebirthstats[10])+1
+        clickpower = (game.rebirthamount[1]*game.rebirthstats[1])+(game.rebirthamount[3]*game.rebirthstats[3])+(game.rebirthamount[5]*game.rebirthstats[5])+(game.rebirthamount[7]*game.rebirthstats[7])+(game.rebirthamount[9]*game.rebirthstats[9])+(game.rebirthamount[11]*game.rebirthstats[11])
+        game.money += (mps/fps)*multiplier
+        for (let c = 0; c < 31; c++) {
+            if (c == 30) {
+                document.getElementById("button31").innerHTML = "$"+getshorter(game.shop[c])
+                document.getElementById("shop31").innerHTML = "+1 Rebirth / $5 octodecillion"
+            } else {
+                document.getElementById("button"+(c+1)).innerHTML = "$"+getshorter(game.shop[c])+" ("+getshorter(game.amount[c])+" owned)"
+                document.getElementById("shop"+(c+1)).innerHTML = "+$"+(getshorter(game.stats[c]*multiplier))+"/s"
+            }
+        }
+        for (let c = 0; c < game.rebirthshop.length; c++) {
+            if (game.rebirthshop[c] == 1) {
+                document.getElementById("buttonrebirth"+(c+1)).innerHTML = getshorter(game.rebirthshop[c])+" Rebirth ("+getshorter(game.rebirthamount[c])+" owned)"
+            } else {
+                document.getElementById("buttonrebirth"+(c+1)).innerHTML = getshorter(game.rebirthshop[c])+" Rebirths ("+getshorter(game.rebirthamount[c])+" owned)"
+            }
+            if (game.rebirthtype[c] == "multiplier") {  
+                document.getElementById("shoprebirth"+(c+1)).innerHTML = "+$"+getshorter(game.rebirthstats[c])+"x"
+            } else {
+                document.getElementById("shoprebirth"+(c+1)).innerHTML = "+$"+getshorter(game.rebirthstats[c])+" per click / upgrade owned"
+            }
+        }
+        document.getElementById("moneytext").innerHTML = "$"+getshorter(game.money)
+        document.getElementById("moneypersectext").innerHTML = "($"+getshorter(mps*multiplier)+"/s)"
+        document.getElementById("clicker").style.translate = "0% "+((Math.sin(timer()/500)*10)+15)+"%"
+        document.getElementById("rebirthtext").innerHTML = getshorter(game.rebirths)
+        document.getElementById("clicker").src = "Assets/"+getcursorskin()+".png"
+        requestAnimationFrame(update)
+    }
+    function getshorter (n) {/*
+        if (n == 0.1) {
+            return n
+        }*/
+        if (n == Infinity) {
+            return n
+        }
+        if (n < 1000) {
+            return Math.floor(n)
+        } else if (n > Math.pow(10, 303)) {
+            return getshorter(Math.floor(n/Math.pow(10, 301))/100)+" centillion"
+        } else if (n > Math.pow(10, 130)) {
+            return getshorter(Math.floor(n/Math.pow(10, 128))/100)+" skewers number"
+        } else if (n > Math.pow(10, 100)) {
+            return getshorter(Math.floor(n/Math.pow(10, 98))/100)+" googol"
+        } else if (n < Math.pow(10, 100) && n > Math.pow(10, 99)-1) {
+            return getshorter(Math.floor(n/Math.pow(10, 98))/100)+" duotrigintillion"
+        }
+        // NUMBERS FROM https://faculty.math.illinois.edu/~castelln/prillion_revised_10-05.pdf
+        const abbr = [" thousand"," million"," billion"," trillion"," quadrillion"," quintrillion"," sextillion"," septillion"," octillion"," nonillion"," decillion"," undecillion"," duodecillion"," tredecillion"," quattuordecillion"," sexdecillion"," septemdecillion"," octodecillion"," novemdecillion"," vigintillion"," unvigintillion"," duovigintillion"," trevigintillion"," quattuorvigintillion"," quinvigintillion"," sexvigintillion"," septvigintillion"," octovigintillion"," nonvigintillion"," trigintillion"," untrigintillion"," duotrigintillion"]
+        let numm = 3
+        while (n > Math.pow(10, numm)-1) {
+            if (n > Math.pow(10, numm)-1) {
+                numm += 3
+            }
+        }
+        numm -= 3
+        return (Math.floor(n/Math.pow(10, numm-2))/100)+abbr[(numm/3)-1]
+    }
+    function savegame () {
+        //money amount rebirths rebirthamount
+        let combo = ""
+        //money
+        storage.set("money", game.money)
+        //shop amount
+        combo = ""
+        for (let index = 0; index < game.amount.length; index++) {
+            combo = combo+game.amount[index]+","
+        }
+        storage.set("amount", combo)
+        //rebirths
+        storage.set("rebirths", game.rebirths)
+        //rebirth shop amount
+        combo = ""
+        for (let index = 0; index < game.rebirthamount.length; index++) {
+            combo = combo+game.rebirthamount[index]+","
+        }
+        storage.set("rebirthamount", combo)
+    }
+    function loadgame () {
+        if (Number(storage.get("money")) > 0) {
+            game.money = Number(storage.get("money"))
+        }
+        if (!(unpkg(storage.get("amount")).includes(NaN)) && unpkg(storage.get("amount")).length == 31) {
+            game.amount = unpkg(storage.get("amount"))
+        }
+        for (let index = 0; index < game.amount.length; index++) {
+            game.amount[index] = Number(game.amount[index])
+            game.shop[index] = game.shop[index]*Math.pow(1.1, game.amount[index])
+        }
+        if (Number(storage.get("rebirths")) > -1) {
+            game.rebirths = Number(storage.get("rebirths"))
+        }
+        if (unpkg(storage.get("rebirthamount"))[0] > -1) {
+            game.rebirthamount = unpkg(storage.get("rebirthamount"))
+        }
+    }
+    function unpkg (t) {
+        let temp = ""
+        let list = []
+        for (let index = 0; index < t.length; index++) {
+            if (t.charAt(index) == ",") {
+                list.push(Number(temp))
+                temp = ""
+            } else {
+                temp = temp+t.charAt(index)
+            }
+        }
+        return list
+    }
+    function resetgame () {
+        let doreset = prompt("Reset game save? Your game save will be lost forever. Type RESET to reset your game save.","")
+        if (doreset == "RESET") {
+            storage.delete("money")
+            storage.delete("amount")
+            storage.delete("rebirths")
+            location.reload()
+        }
+    }
+    function getcursorskin () {
+        let mostrecent = 0
+        for (let index = 0; index < game.shop.length; index++) {
+            if (game.amount[index] > 0) {
+                mostrecent = index
+            }
+        }
+        return Math.floor(mostrecent/6)
+    }
+    </script>
+</body>
+
+</html>
