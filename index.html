@@ -239,6 +239,7 @@
         <button id="buttonrebirth12" onclick="game.buyrebirth(12)">ERROR</button>
     </div>
     <script>
+    let loadedyet = false
     setInterval(savegame, 500)
     //omg this took so long idk why
     document.addEventListener("keydown", event =>{
@@ -435,10 +436,13 @@
             mps += game.stats[index]*game.amount[index]
         }
         let idlemoney
-        if (!(Number(storage.get("lastonline"))==null)) {
-            idlemoney = ((timer()-Number(storage.get("lastonline")))/1000)*mps
-            game.money += idlemoney
-            alert("You made $"+getshorter(Math.floor(idlemoney))+" while you were gone!")
+        while (!(loadedyet)) {
+            if (!(Number(storage.get("lastonline"))==null)) {
+                idlemoney = ((timer()-Number(storage.get("lastonline")))/1000)*mps
+                game.money += idlemoney
+                alert("You made $"+getshorter(Math.floor(idlemoney))+" while you were gone!")
+                loadedyet = true
+            }
         }
     }
     function unpkg (t) {
