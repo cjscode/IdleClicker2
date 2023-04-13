@@ -435,7 +435,7 @@
             mps += game.stats[index]*game.amount[index]
         }
         let idlemoney
-        if (Number(storage.get("lastonline"))>-1) {
+        if (!(Number(storage.get("lastonline"))==null)) {
             idlemoney = ((timer()-Number(storage.get("lastonline")))/1000)*mps
             game.money += idlemoney
             alert("You made $"+Math.floor(idlemoney)+" while you were gone!")
