@@ -252,10 +252,11 @@
         date = new Date()
         return date.getTime()
     }
+    let rebirthing = false
     function rebirth () {
         if (Math.floor(game.money) >= Math.floor(game.shop[game.shop.length-2])) {
+            rebirthing = true
             game.rebirths += Math.floor(game.money/(Math.pow(10, 55)/2))
-            savegame()
             storage.delete("money")
             game.money = 0
             storage.delete("amount")
@@ -396,13 +397,17 @@
         //money amount rebirths rebirthamount
         let combo = ""
         //money
-        storage.set("money", game.money)
+        if (!(rebirthing)) {
+            storage.set("money", game.money)
+        }
         //shop amount
         combo = ""
         for (let index = 0; index < game.amount.length; index++) {
             combo = combo+game.amount[index]+","
         }
-        storage.set("amount", combo)
+        if (!(rebirthing)) {
+            storage.set("amount", combo)
+        }
         //rebirths
         storage.set("rebirths", game.rebirths)
         //rebirth shop amount
