@@ -257,6 +257,7 @@
         if (Math.floor(game.money) >= Math.floor(game.shop[game.shop.length-2])) {
             rebirthing = true
             game.rebirths += Math.floor(game.money/(Math.pow(10, 55)/2))
+            savegame()
             storage.delete("money")
             game.money = 0
             storage.delete("amount")
