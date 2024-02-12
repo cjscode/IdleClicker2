@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idle Clicker 2</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         head, body {
             margin: 0;
@@ -256,15 +255,19 @@
     let rebirthing = false
     function rebirth () {
         if (Math.floor(game.money) >= Math.floor(game.shop[game.shop.length-2])) {
+            let p = prompt("Do you want to Rebirth? You will recieve "+Math.floor(game.money/(Math.pow(10, 55)/2))+" Rebirths. Type REBIRTH to confirm.","")
+            if (!(p == "REBIRTH")) {
+                return
+            }
             rebirthing = true
             game.rebirths += Math.floor(game.money/(Math.pow(10, 55)/2))
             savegame()
             storage.delete("money")
             game.money = 0
             storage.delete("amount")
-            amount = []
+            game.amount = []
             savegame()
-            location.reload()
+            init()
         }
     }
     let game = {
